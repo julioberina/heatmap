@@ -23,24 +23,16 @@ class App extends Component {
     e.preventDefault();
 
     let url = 'https://api.github.com/repos/';
-    let goodResp = false;
     url = url + document.getElementById("username").value + '/';
     url = url + document.getElementById("reponame").value + '/stats/';
     url = url + 'commit_activity?Accept=application/vnd.github.v3+json';
 
-    while (goodResp === false) {
       axios.get(url)
-           .then(response => {
-             if (Object.keys(response.data).length != 0) {
-               this.setState({ data: response.data })
-               goodResp = true;
-             }
-           })
+           .then(response => { this.setState({ data: response.data }) })
            .catch(error => {
              console.error(error);
              console.log('Type a valid username and a valid repo from the Github user')
            })
-    }
   }
 
   reset(e) {
