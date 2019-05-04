@@ -11,6 +11,7 @@ class App extends Component {
     };
 
     this.heat = this.heat.bind(this);
+    this.reset = this.reset.bind(this);
     this.displayHeat = this.displayHeat.bind(this);
 
     for (let i = 0; i < 52; ++i) {
@@ -20,7 +21,6 @@ class App extends Component {
 
   heat(e) {
     e.preventDefault();
-    console.log('clicked submit');
 
     let url = 'https://api.github.com/repos/';
     url = url + document.getElementById("username").value + '/';
@@ -28,7 +28,24 @@ class App extends Component {
     url = url + 'commit_activity?Accept=application/vnd.github.v3+json';
 
     axios.get(url)
-         .then(response => this.setState({ data: response.data }));
+         .then(response => this.setState({ data: response.data }))
+         .catch(error => {
+           console.error(error);
+           console.log('Submit again or type a valid username and a valid repo from the Github user')
+         })
+  }
+
+  reset(e) {
+    e.preventDefault();
+    let newdata = [];
+
+    for (let i = 0; i < 52; ++i) {
+      newdata.push({"days": [0, 0, 0, 0, 0, 0, 0]})
+    }
+
+    document.getElementById("username").value = "";
+    document.getElementById("reponame").value = "";
+    this.setState({ data: newdata });
   }
 
   displayHeat(day) {
@@ -39,7 +56,7 @@ class App extends Component {
         <td key={day*53+(i++)}>{this.state.daysOfWeek[day]}</td>
         {
           this.state.data.map((obj) => {
-            return (<td className={obj.days[day] === 0 ? "uncommitted" : "committed"} key={day*52+(i++)}></td>)
+            return (<td className={obj.days[day] === 0 ? "uncommitted" : "committed"} key={day*53+(i++)}></td>)
           })
         }
       </tr>
@@ -68,7 +85,7 @@ class App extends Component {
         <br />
 
         <div align="center" className="heatmap">
-          <h3>2018 Heatmap</h3>
+          <h3>Yearly Heatmap</h3>
           <p>Weeks (1-52)</p>
           <table>
             <tbody>
