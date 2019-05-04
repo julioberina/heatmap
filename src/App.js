@@ -21,6 +21,14 @@ class App extends Component {
   heat(e) {
     e.preventDefault();
     console.log('clicked submit');
+
+    let url = 'https://api.github.com/repos/';
+    url = url + document.getElementById("username").value + '/';
+    url = url + document.getElementById("reponame").value + '/stats/';
+    url = url + 'commit_activity?Accept=application/vnd.github.v3+json';
+
+    axios.get(url)
+         .then(response => this.setState({ data: response.data }));
   }
 
   reset(e) {
@@ -42,7 +50,7 @@ class App extends Component {
       <tr>
         {
           this.state.data.map((obj) => {
-            return (<td className="uncommitted" key={day*52+(i++)}></td>)
+            return (<td className={obj.days[day] === 0 ? "uncommitted" : "committed"} key={day*52+(i++)}></td>)
           })
         }
       </tr>
