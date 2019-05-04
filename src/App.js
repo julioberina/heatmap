@@ -6,13 +6,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      x: 0,
-      y: 0
+      data: []
     };
 
     this.heat = this.heat.bind(this);
     this.reset = this.reset.bind(this);
+    this.displayHeat = this.displayHeat.bind(this);
 
     for (let i = 0; i < 52; ++i) {
       this.state.data.push({"days": [0, 0, 0, 0, 0, 0, 0]})
@@ -34,6 +33,22 @@ class App extends Component {
     }
 
     this.setState({ data: newdata });
+  }
+
+  displayHeat(day) {
+    let i = 0;
+
+    return (
+      <tbody>
+        <tr>
+        {
+          this.state.data.map((obj) => {
+            return (<td className="uncommitted" key={day*52+(i++)}></td>)
+          })
+        }
+        </tr>
+      </tbody>
+    )
   }
 
   render() {
@@ -60,32 +75,13 @@ class App extends Component {
         <div align="center" className="heatmap">
           <h3>2018 Heatmap</h3>
           <table>
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
+            {this.displayHeat(0)}
+            {this.displayHeat(1)}
+            {this.displayHeat(2)}
+            {this.displayHeat(3)}
+            {this.displayHeat(4)}
+            {this.displayHeat(5)}
+            {this.displayHeat(6)}
           </table>
         </div>
       </div>

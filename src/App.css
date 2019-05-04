@@ -49,9 +49,16 @@
 .heatmap {
   background-color: #222255;
   color: snow;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.heatmap td {
+.uncommitted {
   background-color: #131313;
-  padding: 7px;
+  padding: 6px;
+}
+
+.committed {
+  background-color: yellow;
+  padding: 6px;
 }
