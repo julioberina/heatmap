@@ -32,3 +32,26 @@
   padding: 10px 60px;
   color: #3333ff;
 }
+
+.resetInfo {
+  margin-top: 20px;
+  background-color: white;
+  font-family: sans-serif;
+  font-size: 16pt;
+  font-weight: 900;
+  border-color: #ff3333;
+  border-radius: 20px;
+  border-width: 5px;
+  padding: 10px 60px;
+  color: #ff3333;
+}
+
+.heatmap {
+  background-color: #222255;
+  color: snow;
+}
+
+.heatmap td {
+  background-color: #131313;
+  padding: 7px;
+}
