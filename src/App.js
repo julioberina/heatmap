@@ -39,15 +39,13 @@ class App extends Component {
     let i = 0;
 
     return (
-      <tbody>
-        <tr>
+      <tr>
         {
           this.state.data.map((obj) => {
             return (<td className="uncommitted" key={day*52+(i++)}></td>)
           })
         }
-        </tr>
-      </tbody>
+      </tr>
     )
   }
 
@@ -75,13 +73,15 @@ class App extends Component {
         <div align="center" className="heatmap">
           <h3>2018 Heatmap</h3>
           <table>
-            {this.displayHeat(0)}
-            {this.displayHeat(1)}
-            {this.displayHeat(2)}
-            {this.displayHeat(3)}
-            {this.displayHeat(4)}
-            {this.displayHeat(5)}
-            {this.displayHeat(6)}
+            <tbody>
+              {this.displayHeat(0)}
+              {this.displayHeat(1)}
+              {this.displayHeat(2)}
+              {this.displayHeat(3)}
+              {this.displayHeat(4)}
+              {this.displayHeat(5)}
+              {this.displayHeat(6)}
+            </tbody>
           </table>
         </div>
       </div>
