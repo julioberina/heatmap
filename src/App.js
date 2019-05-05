@@ -33,7 +33,7 @@ class App extends Component {
              let temp = JSON.stringify(response.data);
 
              if (temp === '[]' || temp === '{}') {
-               ptag.innerHTML = 'Request failed to get data. Try pressing submit again';
+               ptag.innerHTML = 'Request failed to get data. Try pressing "Submit" again';
              } else {
                ptag.innerHTML = '';
                this.setState({ data: response.data });
@@ -93,9 +93,9 @@ class App extends Component {
         </div>
 
         <br />
-        
+
         <div align="center">
-          <p id="errormessage">paragrapha text</p>
+          <p id="errormessage"></p>
         </div>
 
         <div align="center" className="heatmap">
