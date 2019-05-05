@@ -33,14 +33,14 @@ class App extends Component {
              let temp = JSON.stringify(response.data);
 
              if (temp === '[]' || temp === '{}') {
-               ptag.value = 'Request failed to get data. Try pressing submit again';
+               ptag.innerHTML = 'Request failed to get data. Try pressing submit again';
              } else {
-               ptag.value = '';
+               ptag.innerHTML = '';
                this.setState({ data: response.data });
              }
            })
            .catch(error => {
-             ptag.value = 'Type a valid username and a valid repo from the Github user';
+             ptag.innerHTML = 'Type a valid username and a valid repo from the Github user';
            })
   }
 
@@ -54,7 +54,7 @@ class App extends Component {
 
     document.getElementById("username").value = "";
     document.getElementById("reponame").value = "";
-    document.getElementById("errormessage").value = "";
+    document.getElementById("errormessage").innerHTML = "";
     this.setState({ data: newdata });
   }
 
@@ -93,7 +93,10 @@ class App extends Component {
         </div>
 
         <br />
-        <p id="errormessage">paragrapha text</p>
+        
+        <div align="center">
+          <p id="errormessage">paragrapha text</p>
+        </div>
 
         <div align="center" className="heatmap">
           <h3>Yearly Heatmap</h3>
