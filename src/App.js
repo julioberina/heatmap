@@ -22,16 +22,25 @@ class App extends Component {
   heat(e) {
     e.preventDefault();
 
+    let ptag = document.getElementById("errormessage");
     let url = 'https://api.github.com/repos/';
     url = url + document.getElementById("username").value + '/';
     url = url + document.getElementById("reponame").value + '/stats/';
     url = url + 'commit_activity?Accept=application/vnd.github.v3+json';
 
       axios.get(url)
-           .then(response => { this.setState({ data: response.data }) })
+           .then(response => {
+             let temp = JSON.stringify(response.data);
+
+             if (temp === '[]' || temp === '{}') {
+               ptag.value = 'Request failed to get data. Try pressing submit again';
+             } else {
+               ptag.value = '';
+               this.setState({ data: response.data });
+             }
+           })
            .catch(error => {
-             console.error(error);
-             console.log('Type a valid username and a valid repo from the Github user')
+             ptag.value = 'Type a valid username and a valid repo from the Github user';
            })
   }
 
@@ -45,6 +54,7 @@ class App extends Component {
 
     document.getElementById("username").value = "";
     document.getElementById("reponame").value = "";
+    document.getElementById("errormessage").value = "";
     this.setState({ data: newdata });
   }
 
@@ -83,6 +93,7 @@ class App extends Component {
         </div>
 
         <br />
+        <p id="errormessage">paragrapha text</p>
 
         <div align="center" className="heatmap">
           <h3>Yearly Heatmap</h3>
