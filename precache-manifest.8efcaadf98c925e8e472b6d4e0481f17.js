@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e9a732a1a700cfd234ee45469e29a7aa",
+    "revision": "0609567114da804c0c518804a726ae1d",
     "url": "/heatmap/index.html"
   },
   {
-    "revision": "d64ad1f08a1d94906318",
+    "revision": "bfcc12571a82346026c4",
     "url": "/heatmap/static/css/main.7e3768de.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/heatmap/static/js/2.4b946ab3.chunk.js"
   },
   {
-    "revision": "d64ad1f08a1d94906318",
-    "url": "/heatmap/static/js/main.bb057910.chunk.js"
+    "revision": "bfcc12571a82346026c4",
+    "url": "/heatmap/static/js/main.aa2b8563.chunk.js"
   },
   {
     "revision": "e6b2793c0c8da9575b6e",
